@@ -9,6 +9,18 @@ public class PlayerController : MonoBehaviour
     public float rotateSpeed = 3.0f;
     public float jumpForce = 15.0f;
     public float gravity = 20.0f;
+    private Vector3 m_dest = Vector3.zero;
+    private List<MonsterController> m_monster;
+
+    public void Init()
+    {
+        m_monster = new List<MonsterController>();
+    }
+
+    public void AddMonster(MonsterController monster)
+    {
+        m_monster.Add(monster);
+    }
 
     private Vector3 moveDirection = Vector3.zero;
     // Update is called once per frame
@@ -41,5 +53,15 @@ public class PlayerController : MonoBehaviour
         moveDirection = transform.TransformDirection(moveDirection);
 
         controller.Move(moveDirection * Time.deltaTime);
+    }
+
+    public void GotCaught()
+    {
+      
+    }
+
+    public void SetDest(Vector3 dest)
+    {
+        m_dest = dest;
     }
 }
