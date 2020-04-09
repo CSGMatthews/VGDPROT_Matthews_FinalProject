@@ -11,7 +11,7 @@ public class MonsterController : MonoBehaviour
     public Transform m_target;
     public float m_moveSpeed = 8.0f;
 
-   
+
     private Text m_deadLabel;
 
     private NavMeshAgent m_agent;
