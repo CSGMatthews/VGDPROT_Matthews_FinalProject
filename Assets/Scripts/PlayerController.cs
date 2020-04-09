@@ -64,4 +64,10 @@ public class PlayerController : MonoBehaviour
     {
         m_dest = dest;
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+       Destroy(gameObject);
+    }
+
 }

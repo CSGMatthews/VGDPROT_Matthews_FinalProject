@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -10,11 +11,15 @@ public class MonsterController : MonoBehaviour
     public Transform m_target;
     public float m_moveSpeed = 8.0f;
 
+   
+    private Text m_deadLabel;
+
     private NavMeshAgent m_agent;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        m_deadLabel = FindObjectOfType<Text>();
         m_agent = GetComponent<NavMeshAgent>();
         m_agent.speed = m_moveSpeed;
     }
@@ -29,7 +34,7 @@ public class MonsterController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player Died!");
+            m_deadLabel.enabled = true;
             other.GetComponent<PlayerController>().GotCaught();
         }
 
