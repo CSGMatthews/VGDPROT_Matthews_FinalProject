@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     public void GotCaught()
     {
-      
+        Debug.Log("Your Dead");
     }
 
     public void SetDest(Vector3 dest)

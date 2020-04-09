@@ -1,20 +1,27 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Portal : MonoBehaviour
 {
     public GameObject m_warpMate;
     private bool m_allowWarp = true;
+    private Text m_winLabel;
+
+    private void Start()
+    {
+        m_winLabel = FindObjectOfType<Text>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("collision!");
         if (other.CompareTag("Player") && m_allowWarp)
         {
-            Debug.Log("Warp!");
+            m_winLabel.enabled = true;
             m_warpMate.GetComponent<Portal>().AllowWarp(false);
+            other.GetComponentInParent<CharacterController>().enabled = false;
             other.transform.position = m_warpMate.transform.position;
-            Debug.Log(other.transform.position);
-            Debug.Log(m_warpMate.transform.position);
+            other.GetComponentInParent<CharacterController>().enabled = true;
         }
     }
 

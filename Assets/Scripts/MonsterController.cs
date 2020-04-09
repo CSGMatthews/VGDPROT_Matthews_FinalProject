@@ -9,7 +9,7 @@ public class MonsterController : MonoBehaviour
 {
     public Transform m_target;
     public float m_moveSpeed = 8.0f;
-  
+
     private NavMeshAgent m_agent;
 
     // Start is called before the first frame update
@@ -22,5 +22,16 @@ public class MonsterController : MonoBehaviour
     private void Update()
     {
         m_agent.SetDestination(m_target.position);
+    }
+
+    private void OnTriggerEnter(Collider other)
+
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player Died!");
+            other.GetComponent<PlayerController>().GotCaught();
+        }
+
     }
 }
