@@ -5,11 +5,11 @@ public class Portal : MonoBehaviour
 {
     public GameObject m_warpMate;
     private bool m_allowWarp = true;
-    private Text m_winLabel;
+    public Text m_winLabel;
 
     private void Start()
     {
-        m_winLabel = FindObjectOfType<Text>();
+        //m_winLabel = FindObjectOfType<Text>();
     }
 
     private void OnTriggerEnter(Collider other)

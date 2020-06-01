@@ -65,9 +65,9 @@ public class PlayerController : MonoBehaviour
         m_dest = dest;
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collider)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collider.gameObject.tag == "Enemy")
         {
             Destroy(this.gameObject);
         }
